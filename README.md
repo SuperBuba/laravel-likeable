@@ -1,18 +1,26 @@
 Laravel Likeable Plugin
 ============
 
-[![Build Status](https://travis-ci.org/rtconner/laravel-likeable.svg?branch=master)](https://travis-ci.org/rtconner/laravel-likeable)
-[![Latest Stable Version](https://poser.pugx.org/rtconner/laravel-likeable/v/stable.svg)](https://packagist.org/packages/rtconner/laravel-likeable)
-[![License](https://poser.pugx.org/rtconner/laravel-likeable/license.svg)](https://packagist.org/packages/rtconner/laravel-likeable)
+This is a fork from [rtconner/laravel-likeable](https://github.com/rtconner/laravel-likeable) by Robert Conner - [smartersoftware.net](http://smartersoftware.net) , thank you for smart software :)
+
+We have added option to have dislike as separate field (counter) or any other countable social reaction (follow,hate,dislike,like ..)
+
+# TODO:
+   Inspired by other [laravel-likeable](https://github.com/DraperStudio/Laravel-Likeable) packages, will add options to tracks reaction with timestamp, which gives us more deep matrics etc..
+
+
+[![Build Status](https://travis-ci.org/nanosolutions/laravel-likeable.svg?branch=master)](https://travis-ci.org/nanosolutions/laravel-likeable)
+[![Latest Stable Version](https://poser.pugx.org/nanosolutions/laravel-likeable/v/stable.svg)](https://packagist.org/packages/nanosolutions/laravel-likeable)
+[![License](https://poser.pugx.org/nanosolutions/laravel-likeable/license.svg)](https://packagist.org/packages/nanosolutions/laravel-likeable)
 
 Trait for Laravel Eloquent models to allow easy implementation of a "like" or "favorite" or "remember" feature.
 
-[Laravel 5 Documentation](https://github.com/rtconner/laravel-likeable/tree/laravel-5)  
-[Laravel 4 Documentation](https://github.com/rtconner/laravel-likeable/tree/laravel-4)
+[Laravel 5 Documentation](https://github.com/nanosolutions/laravel-likeable/tree/laravel-5)  
+[Laravel 4 Documentation](https://github.com/nanosolutions/laravel-likeable/tree/laravel-4)
 
 #### Composer Install (for Laravel 5)
 
-	composer require rtconner/laravel-likeable "~1.2"
+	composer require nanosolutions/laravel-likeable "~1.3"
 
 #### Install and then run the migrations
 
@@ -30,8 +38,10 @@ php artisan migrate
 #### Setup your models
 
 ```php
-class Article extends \Illuminate\Database\Eloquent\Model {
-	use \Nano\Likeable\Likeable;
+use Nano\Likeable\Likeable;
+
+class Article extends Model {
+	use Likeable;
 }
 ```
 
@@ -48,7 +58,7 @@ $article->unlike(0); // remove likes from the count -- does not check for user
 
 $article->likeCount; // get count of likes
 
-$article->likes; // Iterable Illuminate\Database\Eloquent\Collection of existing likes 
+$article->likes; // Iterable Illuminate\Database\Eloquent\Collection of existing likes
 
 $article->liked(); // check if currently logged in user liked the article
 $article->liked($myUserId);
@@ -60,4 +70,4 @@ Article::whereLiked($myUserId) // find only articles where user liked them
 
 #### Credits
 
- - Robert Nano - http://smartersoftware.net
+ - Robert Conner - http://smartersoftware.net
