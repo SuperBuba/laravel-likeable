@@ -1,13 +1,12 @@
 {
-	"name": "rtconner/laravel-likeable",
+	"name": "nanosolutions/laravel-likeable",
 	"description": "Trait for Laravel Eloquent models to allow easy implementation of a 'like' or 'favorite' or 'remember' feature.",
 	"license": "MIT",
-	"homepage": "https://smartersoftware.net/packages/laravel-likeable-favorite",
 	"keywords": ["trait", "laravel", "laravel5", "eloquent", "likeable", "likable", "like", "remember", "follow", "favorite", "favourite"],
 	"authors": [
 		{
-			"name": "Robert Conner",
-			"email": "rtconner@smarter.bz"
+			"name": "Petr Cervenka",
+			"email": "petr@nanosolutions.io"
 		}
 	],
 	"require": {
@@ -22,7 +21,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Conner\\Likeable\\": "src/"
+			"Nano\\Likeable\\": "src/"
 		}
 	},
 	"autoload-dev": {

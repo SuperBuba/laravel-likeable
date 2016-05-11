@@ -1,11 +1,11 @@
 <?php
 
-namespace Conner\Likeable;
+namespace Nano\Likeable;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Copyright (C) 2015 Robert Conner
+ * Copyright (C) 2015 Robert Nano
  */
 class LikeableServiceProvider extends ServiceProvider
 {

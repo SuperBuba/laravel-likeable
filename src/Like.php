@@ -1,6 +1,6 @@
 <?php
 
-namespace Conner\Likeable;
+namespace Nano\Likeable;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 

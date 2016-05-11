@@ -18,12 +18,12 @@ Trait for Laravel Eloquent models to allow easy implementation of a "like" or "f
 
 ```php
 'providers' => [
-	\Conner\Likeable\LikeableServiceProvider::class,
+	\Nano\Likeable\LikeableServiceProvider::class,
 ],
 ```
 
 ```bash
-php artisan vendor:publish --provider="Conner\Likeable\LikeableServiceProvider" --tag=migrations
+php artisan vendor:publish --provider="Nano\Likeable\LikeableServiceProvider" --tag=migrations
 php artisan migrate
 ```
 
@@ -31,7 +31,7 @@ php artisan migrate
 
 ```php
 class Article extends \Illuminate\Database\Eloquent\Model {
-	use \Conner\Likeable\Likeable;
+	use \Nano\Likeable\Likeable;
 }
 ```
 
@@ -60,4 +60,4 @@ Article::whereLiked($myUserId) // find only articles where user liked them
 
 #### Credits
 
- - Robert Conner - http://smartersoftware.net
+ - Robert Nano - http://smartersoftware.net

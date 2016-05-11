@@ -1,9 +1,9 @@
 <?php
 
-namespace Conner\Likeable;
+namespace Nano\Likeable;
 
 /**
- * Copyright (C) 2014 Robert Conner
+ * Copyright (C) 2014 Robert Nano
  */
 trait Likeable
 {
