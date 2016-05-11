@@ -40,10 +40,12 @@ trait Likeable
 
     /**
      * Populate the $model->likes attribute
+     * @param string $type
+     * @return int
      */
-    public function getLikeCountAttribute()
+    public function getLikeCountAttribute($type = 'like')
     {
-        return $this->likeCounter ? $this->likeCounter->count : 0;
+        return $this->likeCounter($type) ? $this->likeCounter($type)->count : 0;
     }
 
     /**
@@ -81,6 +83,7 @@ trait Likeable
         if ($userId) {
             $like = $this->likes($type)
                 ->where('user_id', '=', $userId)
+                ->where('type', $type)
                 ->first();
 
             if ($like) {
@@ -110,6 +113,7 @@ trait Likeable
         if ($userId) {
             $like = $this->likes($type)
                 ->where('user_id', '=', $userId)
+                ->where('type', $type)
                 ->first();
 
             if (!$like) {
@@ -126,9 +130,10 @@ trait Likeable
      * Has the currently logged in user already "liked" the current object
      *
      * @param string $userId
-     * @return boolean
+     * @param string $type
+     * @return bool
      */
-    public function liked($userId = null, $type = 'like')
+    public function liked($type = 'like', $userId = null)
     {
         if (is_null($userId)) {
             $userId = $this->loggedInUserId();
@@ -153,6 +158,7 @@ trait Likeable
             $counter->save();
         } else {
             $counter = new LikeCounter;
+            $counter->type = $type;
             $counter->count = 1;
             $this->likeCounter($type)->save($counter);
         }
