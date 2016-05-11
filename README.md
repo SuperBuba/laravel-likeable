@@ -6,7 +6,7 @@ This is a fork from [rtconner/laravel-likeable](https://github.com/rtconner/lara
 We have added option to have dislike as separate field (counter) or any other countable social reaction (follow,hate,dislike,like ..)
 
 # TODO:
-   Inspired by other [laravel-likeable](https://github.com/DraperStudio/Laravel-Likeable) packages, will add options to tracks reaction with timestamp, which gives us more deep matrics etc..
+   Inspired by other [laravel-likeable](https://github.com/DraperStudio/Laravel-Likeable) packages, will add options to tracks reaction with timestamp, which gives us more deep metrics etc..
 
 
 [![Build Status](https://travis-ci.org/nanosolutions/laravel-likeable.svg?branch=master)](https://travis-ci.org/nanosolutions/laravel-likeable)
@@ -18,7 +18,7 @@ Trait for Laravel Eloquent models to allow easy implementation of a "like" or "f
 [Laravel 5 Documentation](https://github.com/nanosolutions/laravel-likeable/tree/laravel-5)  
 [Laravel 4 Documentation](https://github.com/nanosolutions/laravel-likeable/tree/laravel-4)
 
-#### Composer Install (for Laravel 5)
+#### Composer Install (for Laravel 5+)
 
 	composer require nanosolutions/laravel-likeable "~1.3"
 
@@ -56,10 +56,20 @@ $article->unlike(); // remove like from the article
 $article->unlike($myUserId); // pass in your own user id
 $article->unlike(0); // remove likes from the count -- does not check for user
 
+// Dislike (new metric)
+$article->like('dislike'); // alias -> $article->dislike();
+$article->unlike('dislike'); // alias -> $article->dislike($myUserId);
+
+// Or anything you want (no alias)
+$article->like('follow');
+$article->unlike('follow');
+
+
 $article->likeCount; // get count of likes
+$article->likeCount(dislike''); // get count of dislikes
 
 $article->likes; // Iterable Illuminate\Database\Eloquent\Collection of existing likes
-
+$article->likes('dislike'); // Iterable Illuminate\Database\Eloquent\Collection of existing disklikes
 $article->liked(); // check if currently logged in user liked the article
 $article->liked($myUserId);
 
