@@ -49,13 +49,33 @@ trait Likeable
     }
 
     /**
+     * Populate the $model->likes attribute
+     * @param string $type
+     * @return int
+     */
+    public function getDislikeCountAttribute()
+    {
+        return $this->dislikeCounter ? $this->dislikeCounter->count : 0;
+    }
+
+    /**
      * Collection of the likes on this record
      * @param string $type
      * @return
      */
-    public function likes($type = 'like')
+    public function likes()
     {
-        return $this->morphMany(Like::class, 'likeable')->where('type', $type);
+        return $this->morphMany(Like::class, 'likeable')->where('type', 'like');
+    }
+
+    /**
+     * Collection of the likes on this record
+     * @param string $type
+     * @return
+     */
+    public function dislikes()
+    {
+        return $this->morphMany(Like::class, 'likeable')->where('type', 'dislike');
     }
 
     /**
@@ -64,9 +84,20 @@ trait Likeable
      * @param string $type
      * @return
      */
-    public function likeCounter($type = 'like')
+    public function likeCounter()
     {
-        return $this->morphOne(LikeCounter::class, 'likeable')->where('type', $type);
+        return $this->morphOne(LikeCounter::class, 'likeable')->where('type', 'like');
+    }
+
+    /**
+     * Counter is a record that stores the total likes for the
+     * morphed record
+     * @param string $type
+     * @return
+     */
+    public function dislikeCounter()
+    {
+        return $this->morphOne(LikeCounter::class, 'likeable')->where('type', 'dislike');
     }
 
     /**
@@ -139,6 +170,7 @@ trait Likeable
         $this->unlike('dislike', $userId);
 
     }
+
 
     /**
      * Has the currently logged in user already "liked" the current object

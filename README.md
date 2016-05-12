@@ -66,11 +66,12 @@ $article->unlike('follow');
 
 
 $article->likeCount; // get count of likes
-$article->likeCount(dislike''); // get count of dislikes
+$article->dislikeCount; // get count of dislikes
 
 $article->likes; // Iterable Illuminate\Database\Eloquent\Collection of existing likes
-$article->likes('dislike'); // Iterable Illuminate\Database\Eloquent\Collection of existing disklikes
+$article->dislikes; // Iterable Illuminate\Database\Eloquent\Collection of existing disklikes
 $article->liked(); // check if currently logged in user liked the article
+$article->disliked(); // check if currently logged in user disliked the article
 $article->liked($myUserId);
 
 Article::whereLiked($myUserId) // find only articles where user liked them
