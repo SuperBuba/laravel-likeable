@@ -12,6 +12,18 @@ class Like extends Eloquent
 
     public function likeable($type = 'like')
     {
-        return $this->morphTo()->where('type', $type);
+
+        return $this->morphTo();
+    }
+
+    /**
+     * Get the user that creates the comment.
+     *
+     * @param  $configKey  string
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user($configKey = 'auth.providers.users.model')
+    {
+        return $this->belongsTo(config()->get($configKey));
     }
 }

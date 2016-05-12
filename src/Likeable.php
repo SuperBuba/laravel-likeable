@@ -132,9 +132,7 @@ trait Likeable
 
     public function dislike($userId = null)
     {
-
         $this->like('dislike', $userId);
-
     }
 
     /**
