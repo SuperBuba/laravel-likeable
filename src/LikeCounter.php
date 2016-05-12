@@ -41,5 +41,4 @@ class LikeCounter extends Eloquent
 
         \DB::table((new static)->table)->insert($inserts);
     }
-
 }
