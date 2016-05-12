@@ -30,7 +30,7 @@ class LikeCounter extends Eloquent
         }
 
         $builder = Like::query()
-            ->select(\DB::raw('count(*) as count, likeable_type, likeable_id'))
+            ->select(\DB::raw('count(*) as count, likeable_type, likeable_id, type'))
             ->where('likeable_type', $modelClass)
             ->where('type', $type)
             ->groupBy('likeable_id');

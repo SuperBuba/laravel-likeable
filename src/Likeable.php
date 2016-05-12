@@ -31,7 +31,7 @@ trait Likeable
             $userId = $this->loggedInUserId();
         }
 
-        return $query->whereHas('likes', function ($q) use ($userId) {
+        return $query->whereHas('likes', function ($q) use ($userId, $type) {
             $q->where('user_id', '=', $userId)
                 ->where('type', $type);
         });
@@ -43,9 +43,9 @@ trait Likeable
      * @param string $type
      * @return int
      */
-    public function getLikeCountAttribute($type = 'like')
+    public function getLikeCountAttribute()
     {
-        return $this->likeCounter($type) ? $this->likeCounter($type)->count : 0;
+        return $this->likeCounter ? $this->likeCounter->count : 0;
     }
 
     /**
