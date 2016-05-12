@@ -99,6 +99,12 @@ trait Likeable
         $this->incrementLikeCount($type);
     }
 
+      public function dislike($userId = null)
+
+        $this->like('dislike', $userId);
+
+      }
+
     /**
      * Remove a like from this record for the given user.
      * @param string $type
@@ -124,6 +130,12 @@ trait Likeable
         }
 
         $this->decrementLikeCount($type);
+    }
+
+    public function undislike($userId = null)
+
+      $this->unlike('dislike', $userId);
+
     }
 
     /**
